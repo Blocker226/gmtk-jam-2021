@@ -13,6 +13,8 @@ public class PlanetVolcanic : PlanetBase
     double secondsLeft;
     public TextMeshProUGUI CountText;
     GameObject player;
+    [SerializeField]
+    GameObject refText;
 
     void timerRun()
     {
@@ -39,6 +41,7 @@ public class PlanetVolcanic : PlanetBase
         if (collision.CompareTag("Player"))
         {
             _isShipAttached = true;
+            refText.SetActive(true);
             player = collision.gameObject;
             Debug.Log("Timer Started");
             // alternatively this can also be effected by the size of the planet
@@ -50,6 +53,7 @@ public class PlanetVolcanic : PlanetBase
         if (collision.CompareTag("Player"))
         {
             _isShipAttached = false;
+            refText.SetActive(false);
             countDown = 30.0f;
         }
     }
