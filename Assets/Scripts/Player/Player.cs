@@ -46,9 +46,15 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && _target)
+        if (Input.GetKeyDown(KeyCode.Space) && fuel > 0 && _target)
         {
             _launch = true;
+        }
+        else if (fuel == 0 && _target && !_target.GetComponent<PlanetFuel>())
+        {
+            if (_stopped) return;
+            _stopped = true;
+            onPlayerStopped.Invoke();
         }
     }
 
@@ -74,8 +80,8 @@ public class Player : MonoBehaviour
 
         
         if (_launch)
-        {
-            // _target.GetComponentInChildren<CinemachineVirtualCamera>().enabled = false;
+        { 
+            _target.GetComponentInChildren<CinemachineVirtualCamera>().enabled = false;
             LaunchShip();
         }
     }
@@ -85,7 +91,7 @@ public class Player : MonoBehaviour
         if (_target && _playerCamera.enabled)
         {
             _playerCamera.enabled = false;
-            // _target.GetComponentInChildren<CinemachineVirtualCamera>().enabled = true;
+            _target.GetComponentInChildren<CinemachineVirtualCamera>().enabled = true;
         }
         else if (!_playerCamera.enabled && !_target)
         {
