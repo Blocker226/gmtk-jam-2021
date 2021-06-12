@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 592571306962520484}
   - component: {fileID: 592571306962520506}
+  - component: {fileID: 1966861637028383440}
+  - component: {fileID: 3015441895514107049}
   - component: {fileID: 592571306962520485}
   - component: {fileID: 7761485220502404073}
   m_Layer: 0
@@ -46,15 +48,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65be87e0e4dd5164c91dc6ff874f31c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _target: {fileID: 0}
-  launchSpeed: 1
-  orbitSpeed: 1
+  target: {fileID: 0}
+  launchSpeed: 10
+  orbitSpeed: 2
   fuel: 5
-  _stopThreshold: 0.125
-  _playerCamera: {fileID: 0}
+  stopThreshold: 0.25
+  playerCamera: {fileID: 0}
   onPlayerStopped:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1966861637028383440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 592571306962520505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edeb1b77f65aac046a69437adb9cdd4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 10
+  mask:
+    serializedVersion: 2
+    m_Bits: 64
+  lineWidth: 4
+--- !u!114 &3015441895514107049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 592571306962520505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df25d3766afc4901969eac049eb3bc94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lineWidth: 4
 --- !u!50 &592571306962520485
 Rigidbody2D:
   serializedVersion: 4

@@ -1,7 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,9 +6,9 @@ public class FuelGauge : MonoBehaviour
     [SerializeField]
     float sliderSpeed = 1;
     [SerializeField]
-    Player player;
+    Player.Player player;
     [SerializeField]
-    GameObject _emptyText;
+    GameObject emptyText;
 
     Slider _slider;
     
@@ -20,6 +16,11 @@ public class FuelGauge : MonoBehaviour
     void Start()
     {
         _slider = GetComponent<Slider>();
+
+        if (!player)
+        {
+            player = GameObject.FindWithTag("Player").GetComponent<Player.Player>();
+        }
         _slider.value = player.fuel;
     }
 
@@ -30,9 +31,13 @@ public class FuelGauge : MonoBehaviour
             player.fuel, 
             sliderSpeed * Time.deltaTime);
 
-        if (_slider.value < 0.1f)
+        if (_slider.value < 0.25f)
         {
-            _emptyText.SetActive(true);
+            emptyText.SetActive(true);
+        }
+        else if (emptyText.activeSelf)
+        {
+            emptyText.SetActive(false);
         }
     }
 }
