@@ -17,12 +17,22 @@ public class PlanetFuel : PlanetBase
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        _isShipAttached = true;
         if (collision.CompareTag("Player"))
         {
+            _isShipAttached = true;
             collision.gameObject.GetComponent<Player>().fuel++;
-            Debug.Log("Fuel ++");
+            //Debug.Log("Fuel ++");
+            //camera_ON();
+            Debug.Log("Fuel Cam Enabled");
             // alternatively this can also be effected by the size of the planet
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            _isShipAttached = false;
         }
     }
 
