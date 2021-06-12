@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
@@ -14,6 +16,8 @@ public class Player : MonoBehaviour
     public float _orbitSpeed = 1;
     [SerializeField]
     public int fuel = 5;
+    [SerializeField]
+    CinemachineVirtualCamera _vcam;
 
     bool _launch = false;
 
@@ -29,6 +33,8 @@ public class Player : MonoBehaviour
         {
             _prevPlanet = _target;
         }
+
+        Assert.IsNotNull(_vcam);
     }
 
     // Update is called once per frame
@@ -56,7 +62,21 @@ public class Player : MonoBehaviour
         
         if (_launch)
         {
+            _target.GetComponentInChildren<CinemachineVirtualCamera>().enabled = false;
             LaunchShip();
+        }
+    }
+
+    void LateUpdate()
+    {
+        if (_target && _vcam.enabled)
+        {
+            _vcam.enabled = false;
+            _target.GetComponentInChildren<CinemachineVirtualCamera>().enabled = true;
+        }
+        else if (!_vcam.enabled && !_target)
+        {
+            _vcam.enabled = true;
         }
     }
 
