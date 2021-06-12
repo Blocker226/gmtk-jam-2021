@@ -20,7 +20,7 @@ public class PlanetFuel : PlanetBase
         if (collision.CompareTag("Player"))
         {
             _isShipAttached = true;
-            collision.gameObject.GetComponent<Player>().fuel++;
+            collision.gameObject.GetComponent<Player.Player>().fuel++;
             //Debug.Log("Fuel ++");
             //camera_ON();
             Debug.Log("Fuel Cam Enabled");

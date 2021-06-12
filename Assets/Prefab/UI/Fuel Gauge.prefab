@@ -93,8 +93,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
-  m_fontSizeBase: 18
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -344,7 +344,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sliderSpeed: 1
   player: {fileID: 0}
-  _emptyText: {fileID: 654796139666934393}
+  emptyText: {fileID: 654796139666934393}
 --- !u!1 &654796140442595949
 GameObject:
   m_ObjectHideFlags: 0
@@ -455,7 +455,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 20, y: 10}
-  m_SizeDelta: {x: 160, y: 20}
+  m_SizeDelta: {x: 400, y: 40}
   m_Pivot: {x: 0, y: 0}
 --- !u!1 &654796140788694837
 GameObject:

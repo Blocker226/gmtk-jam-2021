@@ -23,7 +23,7 @@ public class PlanetVolcanic : PlanetBase
         {
             // effect the ship's orbit here
             countDown -= Time.deltaTime;
-            player.gameObject.GetComponent<Player>().orbitSpeed += Time.deltaTime / 2;
+            player.gameObject.GetComponent<Player.Player>().orbitSpeed += Time.deltaTime / 2;
         }
 
         else
