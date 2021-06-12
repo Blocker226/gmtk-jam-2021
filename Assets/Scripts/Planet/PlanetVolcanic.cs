@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 /*
  * A hot, volcanic planet; the radiating heat seems to increase the ship's orbital speed after a X period of time
  */
@@ -10,7 +11,7 @@ public class PlanetVolcanic : PlanetBase
     float countDown = 30.0f; // base value is 30s
     [SerializeField]
     double secondsLeft;
-    public Text disVariable;
+    public TextMeshProUGUI CountText;
     GameObject player;
 
     void timerRun()
@@ -25,7 +26,6 @@ public class PlanetVolcanic : PlanetBase
 
         else
         {
-            Debug.Log("Timer set 0");
             countDown = 0;
         }
 
@@ -66,10 +66,13 @@ public class PlanetVolcanic : PlanetBase
         if (_isShipAttached)
         {
             timerRun();
+            double b = System.Math.Round(countDown, 0);
+            CountText.text = b.ToString();
         }
         else
         {
             countDown = 30.0f; // rst countdown
+            
         }
     }
 }

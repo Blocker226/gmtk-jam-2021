@@ -20,7 +20,7 @@ public class PlanetBase : MonoBehaviour
         planetSize = new Vector3(size, size, size);
         transform.localScale += planetSize; // change planet size
         GetComponent<CircleCollider2D>().isTrigger = true; // Planet trigger
-        GetComponent<CircleCollider2D>().radius = Mathf.Log(size, 2); // Planet trigger size
+        GetComponent<CircleCollider2D>().radius = Mathf.Log(size, 3); // Planet trigger size
         vcam = GetComponentInChildren<CinemachineVirtualCamera>();
     }
 
