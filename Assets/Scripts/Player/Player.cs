@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
@@ -17,9 +18,14 @@ public class Player : MonoBehaviour
     [SerializeField]
     public int fuel = 5;
     [SerializeField]
-    CinemachineVirtualCamera _vcam;
+    float _stopThreshold = 0.125f;
+    [SerializeField]
+    CinemachineVirtualCamera _playerCamera;
+    [SerializeField]
+    UnityEvent onPlayerStopped;
 
-    bool _launch = false;
+    bool _launch;
+    bool _stopped;
 
     Transform _prevPlanet;
     Rigidbody2D _rb;
@@ -28,13 +34,13 @@ public class Player : MonoBehaviour
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
-
+        
         if (_target)
         {
             _prevPlanet = _target;
         }
 
-        Assert.IsNotNull(_vcam);
+        Assert.IsNotNull(_playerCamera);
     }
 
     // Update is called once per frame
@@ -48,6 +54,13 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (!_stopped && !_target && _rb.velocity.magnitude < _stopThreshold)
+        {
+            _stopped = true;
+            _rb.velocity = Vector2.zero;
+            onPlayerStopped.Invoke();
+        }
+        
         if (!_target) return;
         Quaternion q = Quaternion.AngleAxis(_orbitSpeed, Vector3.forward);
         Vector3 targetPosition = _target.position;
@@ -69,14 +82,14 @@ public class Player : MonoBehaviour
 
     void LateUpdate()
     {
-        if (_target && _vcam.enabled)
+        if (_target && _playerCamera.enabled)
         {
-            _vcam.enabled = false;
+            _playerCamera.enabled = false;
             _target.GetComponentInChildren<CinemachineVirtualCamera>().enabled = true;
         }
-        else if (!_vcam.enabled && !_target)
+        else if (!_playerCamera.enabled && !_target)
         {
-            _vcam.enabled = true;
+            _playerCamera.enabled = true;
         }
     }
 

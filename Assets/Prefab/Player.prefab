@@ -50,6 +50,11 @@ MonoBehaviour:
   _launchSpeed: 10
   _orbitSpeed: 2
   fuel: 5
+  _stopThreshold: 0.125
+  _playerCamera: {fileID: 0}
+  onPlayerStopped:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!50 &592571306962520485
 Rigidbody2D:
   serializedVersion: 4
@@ -63,7 +68,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0.25
+  m_LinearDrag: 0.3
   m_AngularDrag: 0.01
   m_GravityScale: 1
   m_Material: {fileID: 0}
