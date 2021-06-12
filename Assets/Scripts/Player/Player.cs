@@ -75,7 +75,7 @@ public class Player : MonoBehaviour
         
         if (_launch)
         {
-            // _target.GetComponentInChildren<CinemachineVirtualCamera>().enabled = false;
+            _target.GetComponentInChildren<CinemachineVirtualCamera>().enabled = false;
             LaunchShip();
         }
     }
@@ -85,7 +85,7 @@ public class Player : MonoBehaviour
         if (_target && _playerCamera.enabled)
         {
             _playerCamera.enabled = false;
-            // _target.GetComponentInChildren<CinemachineVirtualCamera>().enabled = true;
+            _target.GetComponentInChildren<CinemachineVirtualCamera>().enabled = true;
         }
         else if (!_playerCamera.enabled && !_target)
         {
