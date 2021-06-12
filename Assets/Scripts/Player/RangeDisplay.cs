@@ -26,7 +26,7 @@ namespace Player
             {
                 if (hit.transform == origin || hit.transform == previous) continue;
                 //Create a line
-                var points = new List<Vector3>(2) {position, hit.point};
+                var points = new List<Vector3>(2) {position, hit.transform.position};
                 var line = new VectorLine("Planet Line", points, lineWidth);
                 line.SetColor(Color.cyan);
                 line.Draw3DAuto();

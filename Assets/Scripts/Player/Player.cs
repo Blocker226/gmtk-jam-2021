@@ -119,7 +119,9 @@ namespace Player
         void OnTriggerEnter2D(Collider2D other)
         {
             if (target) return;
-            if (!other.CompareTag("Planet") || other.transform == _prevPlanet) return;
+            if (!other.CompareTag("Planet") &&
+                !other.CompareTag("Finish") || 
+                other.transform == _prevPlanet) return;
         
             target = other.transform;
             _rangeDisplay.DrawLines(target, _prevPlanet);
