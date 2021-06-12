@@ -11,9 +11,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     Transform _target;
     [SerializeField]
-    public float _launchSpeed = 1;
+    public float launchSpeed = 1;
     [SerializeField]
-    public float _orbitSpeed = 1;
+    public float orbitSpeed = 1;
     [SerializeField]
     public int fuel = 5;
     [SerializeField]
@@ -49,7 +49,7 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         if (!_target) return;
-        Quaternion q = Quaternion.AngleAxis(_orbitSpeed, Vector3.forward);
+        Quaternion q = Quaternion.AngleAxis(orbitSpeed, Vector3.forward);
         Vector3 targetPosition = _target.position;
         Vector3 currentPosition = transform.position;
         //_rb.MoveRotation(_rb.transform.rotation * q);
@@ -87,7 +87,7 @@ public class Player : MonoBehaviour
         _prevPlanet = _target;
         _target = null;
         _rb.velocity = Vector2.zero;
-        _rb.AddForce(transform.up * _launchSpeed, ForceMode2D.Impulse);
+        _rb.AddForce(transform.up * launchSpeed, ForceMode2D.Impulse);
     }
 
     void OnTriggerEnter2D(Collider2D other)

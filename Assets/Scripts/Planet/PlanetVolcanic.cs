@@ -9,6 +9,8 @@ public class PlanetVolcanic : PlanetBase
 {
     float countDown = 30.0f; // base value is 30s
     public Text disVariable;
+    GameObject player;
+
 
     void timerRun()
     {
@@ -16,8 +18,8 @@ public class PlanetVolcanic : PlanetBase
         if (countDown > 0)
         {
             // effect the ship's orbit here
-            // do we have to reset the ship orbital speed upon launch?
             countDown -= Time.deltaTime;
+            player.gameObject.GetComponent<Player>().orbitSpeed+=Time.deltaTime/2;
         }
 
         else
@@ -31,28 +33,43 @@ public class PlanetVolcanic : PlanetBase
         GetComponent<Text>().text = b.ToString();
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        _isShipAttached = true;
+        if (collision.CompareTag("Player"))
+        {
+            player = collision.gameObject;
+            Debug.Log("Timer Started");
+            // alternatively this can also be effected by the size of the planet
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        _isShipAttached = false;
+        //countDown = 30.0f;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         // initialise time to 0 for each of the planet
         // create a text to reflect the timer
         // timer is linearly related to the size of the planet
-        //  larger planets larger timer
+        // larger planets larger timer
+        planetInit();
     }
 
     // Update is called once per frame
     void Update()
     {
-        /*
-         * if(Ship in orbit)
-         * {
-         *   timerRun();
-         * }
-         * else
-         * {
-         *  countDown = 30.0f; // rst countdown
-         * }
-         */
-
+        if (_isShipAttached)
+        {
+            timerRun();
+        }
+        else
+        {
+            countDown = 30.0f; // rst countdown
+        }
     }
 }
