@@ -831,6 +831,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2995956134813992080}
   - component: {fileID: 9204142407550279635}
+  - component: {fileID: 8600866344990003655}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -872,8 +873,8 @@ MonoBehaviour:
   levelTitle: Gargantua
   transitionLength: 2.5
   gameOverMessages:
-  - Without fuel to continue the journey, your crew are doomed to die in the cold,
-    dark depths of space.
+  - Without a planet to correct their course, your crew are doomed to die in the
+    cold, dark depths of space.
   - Without fuel to continue the journey, your crew are forced to land on the inhospitable
     planet, many perish trying to survive.
   startCanvas: {fileID: 354830303147963285}
@@ -884,6 +885,105 @@ MonoBehaviour:
   gameOverCamera: {fileID: 3229864157754596633}
   gameStartText: {fileID: 5876775199757636209}
   gameOverText: {fileID: 4766137970732687815}
+  audio_drifted: {fileID: 0}
+  audio_outoffuel: {fileID: 0}
+  bgm: {fileID: 0}
+--- !u!82 &8600866344990003655
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4625388648225660579}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 6271a976b43ee4f41bed42290944f39e, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &8787436225326766236
 GameObject:
   m_ObjectHideFlags: 0
