@@ -137,7 +137,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6437365897215551555}
   - component: {fileID: 3262873029395271174}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Post-Process Volume
   m_TagString: Untagged
   m_Icon: {fileID: 0}

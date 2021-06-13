@@ -1,3 +1,4 @@
+using System;
 using Cinemachine;
 using DG.Tweening;
 using TMPro;
@@ -5,6 +6,7 @@ using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using UnityEngine.Video;
 
 namespace Player
 {
@@ -12,9 +14,11 @@ namespace Player
     public class Player : MonoBehaviour
     {
         [SerializeField]
-        Transform target;
+        public Transform target;
         [SerializeField]
         public float launchSpeed = 1;
+        [SerializeField]
+        float boostSpeed = 3;
         [SerializeField]
         public float orbitSpeed = 1;
         [SerializeField]
@@ -30,6 +34,7 @@ namespace Player
 
         float _blackHoleDist;
         bool _launch;
+        bool _boost;
         bool _stopped;
 
         Transform _prevPlanet;
@@ -68,11 +73,19 @@ namespace Player
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
             
-            if (Input.GetKeyDown(KeyCode.Space) && fuel > 0 && target)
+            if (Input.GetKeyDown(KeyCode.Space) && fuel > 0)
             {
-                _launch = true;
+                if (target)
+                {
+                    _launch = true;
+                }
+                else
+                {
+                    _boost = true;
+                }
             }
-            else if (fuel == 0 && target && !target.GetComponent<PlanetFuel>())
+            else if (fuel == 0 && target && !target.GetComponent<PlanetFuel>() 
+                     && !target.CompareTag("Finish"))
             {
                 //Player stranded.
                 orbitSpeed = Mathf.MoveTowards(orbitSpeed, 0.1f, Time.deltaTime / 2);
@@ -84,14 +97,21 @@ namespace Player
 
         void FixedUpdate()
         {
-            if (!_stopped && !target && _rb.velocity.magnitude < stopThreshold)
+            if (!target)
             {
-                //Player lost.
-                _stopped = true;
-                _rb.velocity = Vector2.zero;
-                _gameManager.Lose(0);
+                if (_boost)
+                {
+                    BoostShip();
+                }
+                else if (!_stopped && _rb.velocity.magnitude < stopThreshold)
+                {
+                    //Player lost.
+                    _stopped = true;
+                    _rb.velocity = Vector2.zero;
+                    _gameManager.Lose(0);
+                }
             }
-        
+
             if (!target) return;
             Quaternion q = Quaternion.AngleAxis(orbitSpeed, Vector3.forward);
             Vector3 targetPosition = target.position;
@@ -142,6 +162,17 @@ namespace Player
             ship.Ignite();
             _rb.AddForce(transform.up * launchSpeed, ForceMode2D.Impulse);
             _rangeDisplay.ClearLines();
+
+            EventHandler handler = ShipLaunched;
+            handler?.Invoke(this, null);
+        }
+
+        void BoostShip()
+        {
+            --fuel;
+            ship.Ignite(0.5f);
+            _rb.AddForce(transform.up * boostSpeed, ForceMode2D.Impulse);
+            _boost = false;
         }
 
         void OnTriggerEnter2D(Collider2D other)
@@ -153,6 +184,9 @@ namespace Player
         
             target = other.transform;
             Attached.Play();
+            
+            EventHandler handler = PlanetReached;
+            handler?.Invoke(this, null);
             
             if (!other.CompareTag("Finish"))
             {
@@ -169,5 +203,8 @@ namespace Player
                 _gameManager.Win();
             }
         }
+
+        public event EventHandler PlanetReached;
+        public event EventHandler ShipLaunched;
     }
 }

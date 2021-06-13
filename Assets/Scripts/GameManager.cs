@@ -8,13 +8,15 @@ using TMPro;
 using UI;
 using UnityEngine.SceneManagement;
 
-
+[RequireComponent(typeof(AudioSource))]
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
     int currentLevel = 1;
     [SerializeField]
     string levelTitle = "Gargantua";
+    [SerializeField]
+    float startLength = 4;
     [SerializeField]
     float transitionLength = 2.5f;
     [SerializeField]
@@ -43,22 +45,29 @@ public class GameManager : MonoBehaviour
     TextMeshProUGUI gameOverText;
 
     [SerializeField]
-    AudioSource audio_drifted;
+    AudioClip clipDrifted;
     [SerializeField]
-    AudioSource audio_outoffuel;
-    [SerializeField]
-    AudioSource bgm;
+    AudioClip clipOutOfFuel;
+    AudioSource _bgm;
+    AudioSource _audio;
 
     void Start()
     {
         gameStartText.text = levelTitle + "\n" + currentLevel + "/4";
-        startCanvas.DOFade(0, transitionLength / 2)
-            .SetDelay(4).SetEase(Ease.OutQuad);
 
+        if (Camera.main)
+        {
+            _bgm = Camera.main.GetComponentInChildren<AudioSource>();
+        }
+
+        _audio = GetComponent<AudioSource>();
         if (!gameOverCamera.Follow)
         {
             gameOverCamera.Follow = GameObject.FindWithTag("Player").transform;
         }
+        
+        startCanvas.DOFade(0, transitionLength)
+            .SetDelay(startLength - transitionLength).SetEase(Ease.OutQuad);
     }
 
     public void Win()
@@ -87,15 +96,17 @@ public class GameManager : MonoBehaviour
         gameOverText.text = gameOverMessages[message];
         gameOverCanvas.DOFade(1, transitionLength);
         Debug.Log("YOU LOS");
-        if(message == 0)
+
+        _bgm.DOFade(0, 1).OnComplete(() =>
         {
-            audio_drifted.Play();
-        }
-        else
-        {
-            audio_outoffuel.volume = 0.5f;
-            audio_outoffuel.Play();
-        }
-        bgm.Stop();
+            if(message == 0)
+            {
+                _audio.PlayOneShot(clipDrifted);
+            }
+            else
+            {
+                _audio.PlayOneShot(clipOutOfFuel, 0.5f);
+            }
+        });
     }
 }

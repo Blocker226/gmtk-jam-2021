@@ -50,11 +50,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  launchSpeed: 15
+  launchSpeed: 30
+  boostSpeed: 0.5
   orbitSpeed: 2
   blackHoleSucc: 4
   fuel: 5
-  stopThreshold: 0.25
+  stopThreshold: 0.2
   ship: {fileID: 6626635650766868090}
   Attached: {fileID: 5334672257098165835}
 --- !u!114 &1966861637028383440

@@ -21,16 +21,16 @@ namespace Player
         [SerializeField]
         AudioSource engineNoise;
         
-        public void Ignite()
+        public void Ignite(float seconds = 0)
         {
-            StartCoroutine(EngineBurn());
+            StartCoroutine(EngineBurn(seconds > 0 ? seconds : burnDuration));
         }
 
-        IEnumerator EngineBurn()
+        IEnumerator EngineBurn(float seconds)
         {
             engineNoise.Play();
             engineFX.Play(true);
-            yield return new WaitForSeconds(burnDuration);
+            yield return new WaitForSeconds(seconds);
             engineFX.Stop(true);
             engineNoise.Stop();
         }

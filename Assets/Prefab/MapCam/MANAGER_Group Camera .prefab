@@ -247,7 +247,7 @@ PrefabInstance:
       objectReference: {fileID: 597026255235578658}
     - target: {fileID: 3348762659125184135, guid: b380322f75d75bd4cb84ae779d5d604c, type: 3}
       propertyPath: m_Name
-      value: GroupCameraFinal
+      value: Map Camera
       objectReference: {fileID: 0}
     - target: {fileID: 3348762659125184152, guid: b380322f75d75bd4cb84ae779d5d604c, type: 3}
       propertyPath: m_Follow
@@ -257,6 +257,10 @@ PrefabInstance:
       propertyPath: m_LookAt
       value: 
       objectReference: {fileID: 3345280194556413518}
+    - target: {fileID: 3348762659125184152, guid: b380322f75d75bd4cb84ae779d5d604c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3348762659125184153, guid: b380322f75d75bd4cb84ae779d5d604c, type: 3}
       propertyPath: mapcam
       value: 
