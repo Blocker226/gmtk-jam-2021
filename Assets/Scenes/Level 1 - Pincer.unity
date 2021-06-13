@@ -422,11 +422,6 @@ AudioSource:
   m_CorrespondingSourceObject: {fileID: 7673174330905959540, guid: d6c311ead0b84ef49be8c5a12ff786d8, type: 3}
   m_PrefabInstance: {fileID: 1512906766}
   m_PrefabAsset: {fileID: 0}
---- !u!82 &255249965 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 9123830398692661570, guid: 116db9a819475334883a8857874fdc5c, type: 3}
-  m_PrefabInstance: {fileID: 2112386074}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &261615870 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4486883035639372304, guid: 477c96c3fccc46f4aa8f633c1e8c5b6d, type: 3}
@@ -1876,14 +1871,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1641285677}
     - target: {fileID: 592571306962520506, guid: 45042c108cefee340aa69e93b8416ecf, type: 3}
-      propertyPath: Attached
-      value: 
-      objectReference: {fileID: 255249965}
-    - target: {fileID: 592571306962520506, guid: 45042c108cefee340aa69e93b8416ecf, type: 3}
-      propertyPath: launchSpeed
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 592571306962520506, guid: 45042c108cefee340aa69e93b8416ecf, type: 3}
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 1875017049}
@@ -2002,6 +1989,10 @@ PrefabInstance:
     - target: {fileID: 592571306962520506, guid: 45042c108cefee340aa69e93b8416ecf, type: 3}
       propertyPath: onPlayerStranded.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7902006397539755109, guid: 45042c108cefee340aa69e93b8416ecf, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45042c108cefee340aa69e93b8416ecf, type: 3}

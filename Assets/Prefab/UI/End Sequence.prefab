@@ -484,7 +484,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5934064108433822704}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -669,7 +669,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camSpeed: 1
   scrollSpeed: 50
-  scrollLength: 3000
+  scrollLength: 3500
   credits: {fileID: 4221408423434261159}
 --- !u!1 &9219602658292194454
 GameObject:
