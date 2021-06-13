@@ -21,7 +21,9 @@ namespace Player
         [SerializeField]
         CinemachineVirtualCamera playerCamera;
         [SerializeField]
-        UnityEvent onPlayerStopped;
+        UnityEvent onPlayerLost;
+        [SerializeField]
+        UnityEvent onPlayerStranded;
 
         float _defaultOrbitSpeed;
         bool _launch;
@@ -45,6 +47,7 @@ namespace Player
             {
                 _prevPlanet = target;
                 _logbook.AddPlanet(target);
+                _rangeDisplay.DrawLines(target, _prevPlanet);
             }
 
             Assert.IsNotNull(playerCamera);
@@ -59,9 +62,10 @@ namespace Player
             }
             else if (fuel == 0 && target && !target.GetComponent<PlanetFuel>())
             {
+                orbitSpeed = Mathf.MoveTowards(orbitSpeed, 0.1f, Time.deltaTime / 2);
                 if (_stopped) return;
                 _stopped = true;
-                onPlayerStopped.Invoke();
+                onPlayerStranded.Invoke();
             }
         }
 
@@ -71,7 +75,7 @@ namespace Player
             {
                 _stopped = true;
                 _rb.velocity = Vector2.zero;
-                onPlayerStopped.Invoke();
+                onPlayerLost.Invoke();
             }
         
             if (!target) return;
