@@ -72,10 +72,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6774266132753305238, guid: 6759d81dac042a944a53294e3b478972, type: 3}
-      propertyPath: m_Priority
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 6774266132753305238, guid: 6759d81dac042a944a53294e3b478972, type: 3}
       propertyPath: m_Lens.OrthographicSize
       value: 15
       objectReference: {fileID: 0}
