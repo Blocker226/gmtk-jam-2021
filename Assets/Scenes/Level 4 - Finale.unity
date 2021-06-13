@@ -998,10 +998,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7767898269865005084, guid: c289d17cac3076c4db6b138306977b57, type: 3}
-      propertyPath: scrollLength
-      value: 3500
-      objectReference: {fileID: 0}
     - target: {fileID: 7767898269865005086, guid: c289d17cac3076c4db6b138306977b57, type: 3}
       propertyPath: m_Name
       value: End Sequence
