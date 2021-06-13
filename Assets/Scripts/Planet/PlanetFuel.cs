@@ -50,6 +50,7 @@ public class PlanetFuel : PlanetBase
             _isShipAttached = false;
             collision.gameObject.GetComponent<Player.Player>().orbitSpeed = orbitSpd;
             //Debug.Log("Fuel Orbit Speed: " + orbitSpd.ToString());
+            camera_OFF();
             if (_Tutorial)
             {
                 _Tutorial.text = "";

@@ -1822,7 +1822,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1864115389}
+    m_TransformParent: {fileID: 951476099}
     m_Modifications:
     - target: {fileID: 9123830398692661568, guid: 116db9a819475334883a8857874fdc5c, type: 3}
       propertyPath: m_Name
@@ -1830,7 +1830,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9123830398692661569, guid: 116db9a819475334883a8857874fdc5c, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9123830398692661569, guid: 116db9a819475334883a8857874fdc5c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1842,7 +1842,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9123830398692661569, guid: 116db9a819475334883a8857874fdc5c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 9123830398692661569, guid: 116db9a819475334883a8857874fdc5c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1874,11 +1874,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 116db9a819475334883a8857874fdc5c, type: 3}
---- !u!4 &992897470 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 9123830398692661569, guid: 116db9a819475334883a8857874fdc5c, type: 3}
-  m_PrefabInstance: {fileID: 992897469}
-  m_PrefabAsset: {fileID: 0}
 --- !u!82 &992897471 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 9123830398692661570, guid: 116db9a819475334883a8857874fdc5c, type: 3}
@@ -2033,7 +2028,7 @@ PrefabInstance:
       objectReference: {fileID: 744643380}
     - target: {fileID: 9204142407550279635, guid: 47aa6d6016505c44986122ada86eebb2, type: 3}
       propertyPath: levelTitle
-      value: Ez
+      value: Sagittarius A
       objectReference: {fileID: 0}
     - target: {fileID: 9204142407550279635, guid: 47aa6d6016505c44986122ada86eebb2, type: 3}
       propertyPath: currentLevel
@@ -3251,7 +3246,6 @@ Transform:
   m_Children:
   - {fileID: 744643379}
   - {fileID: 547312238}
-  - {fileID: 992897470}
   - {fileID: 1862708393}
   m_Father: {fileID: 0}
   m_RootOrder: 0

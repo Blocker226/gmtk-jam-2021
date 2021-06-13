@@ -19,6 +19,7 @@ public class PlanetBase : MonoBehaviour
     [SerializeField]
     protected TextMeshProUGUI _Tutorial;
     [SerializeField]
+    [TextArea]
     protected string _TutorialWords;
 
     protected void planetInit()
@@ -44,6 +45,7 @@ public class PlanetBase : MonoBehaviour
 
     protected void camera_OFF()
     {
+        vcam.m_Lens.OrthographicSize -= size * 2;
         vcam.enabled = false;
     }
 

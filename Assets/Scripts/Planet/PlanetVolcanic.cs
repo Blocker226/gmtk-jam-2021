@@ -59,6 +59,7 @@ public class PlanetVolcanic : PlanetBase
             refText.SetActive(false);
             countDown = 20.0f;
             collision.gameObject.GetComponent<Player.Player>().orbitSpeed = orbitSpd;
+            camera_OFF();
             //Debug.Log("Volc Orbit Speed: " + orbitSpd.ToString());
         }
     }
