@@ -40,13 +40,13 @@ public class PlanetBase : MonoBehaviour
     protected void camera_ON()
     {
         vcam.enabled = true;
-        vcam.m_Lens.OrthographicSize += size*2;
+        //vcam.m_Lens.OrthographicSize += size*2;
     }
 
     protected void camera_OFF()
     {
-        vcam.m_Lens.OrthographicSize -= size * 2;
         vcam.enabled = false;
+        //vcam.m_Lens.OrthographicSize -= size * 2;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

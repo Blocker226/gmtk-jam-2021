@@ -1093,6 +1093,10 @@ PrefabInstance:
       value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 592571306962520506, guid: 45042c108cefee340aa69e93b8416ecf, type: 3}
+      propertyPath: launchSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 592571306962520506, guid: 45042c108cefee340aa69e93b8416ecf, type: 3}
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 0}
