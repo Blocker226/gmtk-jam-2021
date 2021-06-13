@@ -1821,7 +1821,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9204142407550279635, guid: 47aa6d6016505c44986122ada86eebb2, type: 3}
       propertyPath: levelTitle
-      value: Ez
+      value: Sagittarius A
       objectReference: {fileID: 0}
     - target: {fileID: 9204142407550279635, guid: 47aa6d6016505c44986122ada86eebb2, type: 3}
       propertyPath: currentLevel
@@ -2366,7 +2366,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8368109690542394322, guid: 27e3eb06b8f01f04da8a4935bd3e4f4f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8368109690542394322, guid: 27e3eb06b8f01f04da8a4935bd3e4f4f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2374,7 +2374,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8368109690542394322, guid: 27e3eb06b8f01f04da8a4935bd3e4f4f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -20
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 8368109690542394322, guid: 27e3eb06b8f01f04da8a4935bd3e4f4f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2418,7 +2418,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8368109690542394323, guid: 27e3eb06b8f01f04da8a4935bd3e4f4f, type: 3}
       propertyPath: orthographic size
-      value: 20
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8368109690542394325, guid: 27e3eb06b8f01f04da8a4935bd3e4f4f, type: 3}
       propertyPath: m_Name

@@ -51,7 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   launchSpeed: 30
-  boostSpeed: 0.5
+  boostSpeed: 0.75
   orbitSpeed: 2
   blackHoleSucc: 4
   fuel: 5
