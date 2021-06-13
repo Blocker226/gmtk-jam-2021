@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using TMPro;
 /*
  * A neutral planet; does not effect the ship in anyway
  */
@@ -15,6 +16,10 @@ public class PlanetBase : MonoBehaviour
     [SerializeField]
     protected CinemachineVirtualCamera vcam;
     protected float orbitSpd;
+    [SerializeField]
+    protected TextMeshProUGUI _Tutorial;
+    [SerializeField]
+    protected string _TutorialWords;
 
     protected void planetInit()
     {
@@ -50,6 +55,10 @@ public class PlanetBase : MonoBehaviour
             orbitSpd = collision.gameObject.GetComponent<Player.Player>().orbitSpeed;
             //Debug.Log("Base Orbit Speed: " + orbitSpd.ToString());
             orbitReg(collision);
+            if (_Tutorial)
+            {
+                _Tutorial.text = _TutorialWords;
+            }
         }
     }
 
@@ -63,6 +72,10 @@ public class PlanetBase : MonoBehaviour
             //Debug.Log("cam disabled");
             collision.gameObject.GetComponent<Player.Player>().orbitSpeed = orbitSpd;
             //Debug.Log("Base Orbit Speed: " + orbitSpd.ToString());
+            if (_Tutorial)
+            {
+                _Tutorial.text = "";
+            }
         }
     }
 

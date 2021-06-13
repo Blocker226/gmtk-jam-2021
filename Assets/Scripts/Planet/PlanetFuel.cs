@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 /*
  * A carbon-filled planet; Will prove to be useful when refuelling your lifecraft...
  */
@@ -36,6 +37,10 @@ public class PlanetFuel : PlanetBase
             //collision.gameObject.GetComponent<Player.Player>().orbitSpeed /= (float)size;
             orbitReg(collision);
         }
+        if (_Tutorial)
+        {
+            _Tutorial.text = _TutorialWords;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -45,6 +50,10 @@ public class PlanetFuel : PlanetBase
             _isShipAttached = false;
             collision.gameObject.GetComponent<Player.Player>().orbitSpeed = orbitSpd;
             //Debug.Log("Fuel Orbit Speed: " + orbitSpd.ToString());
+            if (_Tutorial)
+            {
+                _Tutorial.text = "";
+            }
         }
     }
 

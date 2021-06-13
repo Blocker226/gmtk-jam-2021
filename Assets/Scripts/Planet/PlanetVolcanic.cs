@@ -76,11 +76,18 @@ public class PlanetVolcanic : PlanetBase
             timerRun();
             double b = System.Math.Round(countDown, 0);
             CountText.text = b.ToString();
+            if (_Tutorial)
+            {
+                _Tutorial.text = _TutorialWords;
+            }
         }
         else
         {
             countDown = 30.0f; // rst countdown
-            
+            if(_Tutorial)
+            {
+                _Tutorial.text = "";
+            }
         }
     }
 }
