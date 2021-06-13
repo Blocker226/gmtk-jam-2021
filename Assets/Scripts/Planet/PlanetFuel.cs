@@ -23,7 +23,7 @@ public class PlanetFuel : PlanetBase
             collision.gameObject.GetComponent<Player.Player>().fuel++;
             //Debug.Log("Fuel ++");
             //camera_ON();
-            Debug.Log("Fuel Cam Enabled");
+            //Debug.Log("Fuel Cam Enabled");
             // alternatively this can also be effected by the size of the planet
         }
     }

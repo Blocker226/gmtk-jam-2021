@@ -8,20 +8,21 @@ using Cinemachine;
 public class PlanetBase : MonoBehaviour
 {
     [SerializeField]
-    protected float size = 1.0f; // change this for planet size
+    [Range(1, 5)]
+    protected int size = 1; // change this for planet size
     [SerializeField]
     protected bool _isShipAttached = false;
     [SerializeField]
     protected CinemachineVirtualCamera vcam;
-    private Vector3 planetSize;
 
     protected void planetInit()
     {
-        planetSize = new Vector3(size, size, size);
-        transform.localScale += planetSize; // change planet size
+        size = (int)transform.localScale.x;   
         GetComponent<CircleCollider2D>().isTrigger = true; // Planet trigger
-        GetComponent<CircleCollider2D>().radius = Mathf.Log(size, 3); // Planet trigger size
         vcam = GetComponentInChildren<CinemachineVirtualCamera>();
+        //transform.localScale += planetSize; // change planet size
+        //planetSize = new Vector3(size, size, size);
+        //GetComponent<CircleCollider2D>().radius = Mathf.Log(size, 3); // Planet trigger size
     }
 
     protected void camera_ON()
@@ -41,7 +42,7 @@ public class PlanetBase : MonoBehaviour
             _isShipAttached = true;
             //Debug.Log("Ship attached");
             //camera_ON();
-            Debug.Log("Base cam enabled");
+            //Debug.Log("Base cam enabled");
         }
     }
 
@@ -52,7 +53,7 @@ public class PlanetBase : MonoBehaviour
             _isShipAttached = false;
             //Debug.Log("Ship departed");
             //camera_OFF();
-            Debug.Log("cam disabled");
+            //Debug.Log("cam disabled");
         }
     }
 

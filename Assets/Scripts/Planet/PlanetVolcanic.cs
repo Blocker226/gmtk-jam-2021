@@ -43,7 +43,7 @@ public class PlanetVolcanic : PlanetBase
             _isShipAttached = true;
             refText.SetActive(true);
             player = collision.gameObject;
-            Debug.Log("Timer Started");
+            //Debug.Log("Timer Started");
             // alternatively this can also be effected by the size of the planet
         }
     }
