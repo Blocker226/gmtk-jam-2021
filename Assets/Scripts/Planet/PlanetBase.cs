@@ -14,6 +14,7 @@ public class PlanetBase : MonoBehaviour
     protected bool _isShipAttached = false;
     [SerializeField]
     protected CinemachineVirtualCamera vcam;
+    protected float orbitSpd;
 
     protected void planetInit()
     {
@@ -25,9 +26,15 @@ public class PlanetBase : MonoBehaviour
         //GetComponent<CircleCollider2D>().radius = Mathf.Log(size, 3); // Planet trigger size
     }
 
+    protected void orbitReg(Collider2D a)
+    {
+        a.gameObject.GetComponent<Player.Player>().orbitSpeed -= size / 12;
+    }
+
     protected void camera_ON()
     {
         vcam.enabled = true;
+        vcam.m_Lens.OrthographicSize += size;
     }
 
     protected void camera_OFF()
@@ -40,9 +47,9 @@ public class PlanetBase : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             _isShipAttached = true;
-            //Debug.Log("Ship attached");
-            //camera_ON();
-            //Debug.Log("Base cam enabled");
+            orbitSpd = collision.gameObject.GetComponent<Player.Player>().orbitSpeed;
+            //Debug.Log("Base Orbit Speed: " + orbitSpd.ToString());
+            orbitReg(collision);
         }
     }
 
@@ -54,6 +61,8 @@ public class PlanetBase : MonoBehaviour
             //Debug.Log("Ship departed");
             //camera_OFF();
             //Debug.Log("cam disabled");
+            collision.gameObject.GetComponent<Player.Player>().orbitSpeed = orbitSpd;
+            //Debug.Log("Base Orbit Speed: " + orbitSpd.ToString());
         }
     }
 

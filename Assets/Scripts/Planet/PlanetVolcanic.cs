@@ -23,7 +23,7 @@ public class PlanetVolcanic : PlanetBase
         {
             // effect the ship's orbit here
             countDown -= Time.deltaTime;
-            player.gameObject.GetComponent<Player.Player>().orbitSpeed += Time.deltaTime / 2;
+            player.gameObject.GetComponent<Player.Player>().orbitSpeed += (Time.deltaTime / 12 * size);
         }
 
         else
@@ -43,8 +43,10 @@ public class PlanetVolcanic : PlanetBase
             _isShipAttached = true;
             refText.SetActive(true);
             player = collision.gameObject;
-            //Debug.Log("Timer Started");
+            orbitSpd = collision.gameObject.GetComponent<Player.Player>().orbitSpeed;
+            //Debug.Log("Volc Orbit Speed: " + orbitSpd.ToString());
             // alternatively this can also be effected by the size of the planet
+            orbitReg(collision);
         }
     }
 
@@ -55,6 +57,8 @@ public class PlanetVolcanic : PlanetBase
             _isShipAttached = false;
             refText.SetActive(false);
             countDown = 30.0f;
+            collision.gameObject.GetComponent<Player.Player>().orbitSpeed = orbitSpd;
+            //Debug.Log("Volc Orbit Speed: " + orbitSpd.ToString());
         }
     }
 
