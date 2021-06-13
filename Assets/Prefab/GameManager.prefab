@@ -833,7 +833,7 @@ GameObject:
   - component: {fileID: 9204142407550279635}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -880,6 +880,7 @@ MonoBehaviour:
   gameCanvas: {fileID: 3931170290434332100}
   fadeCanvas: {fileID: 24724600000441937}
   gameOverCanvas: {fileID: 8728671120804544638}
+  endSequence: {fileID: 0}
   gameOverCamera: {fileID: 3229864157754596633}
   gameStartText: {fileID: 5876775199757636209}
   gameOverText: {fileID: 4766137970732687815}

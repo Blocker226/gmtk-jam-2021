@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Planet
+  - Player Camera
   layers:
   - Default
   - TransparentFX

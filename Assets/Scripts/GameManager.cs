@@ -47,6 +47,11 @@ public class GameManager : MonoBehaviour
         gameStartText.text = levelTitle + "\n" + currentLevel + "/4";
         startCanvas.DOFade(0, transitionLength / 2)
             .SetDelay(4).SetEase(Ease.OutQuad);
+
+        if (!gameOverCamera.Follow)
+        {
+            gameOverCamera.Follow = GameObject.FindWithTag("Player").transform;
+        }
     }
 
     public void Win()

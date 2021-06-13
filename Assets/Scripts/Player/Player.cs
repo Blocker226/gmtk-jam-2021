@@ -24,13 +24,7 @@ namespace Player
         [SerializeField]
         float stopThreshold = 0.125f;
         [SerializeField]
-        CinemachineVirtualCamera playerCamera;
-        [SerializeField]
-        UnityEvent onPlayerLost;
-        [SerializeField]
-        UnityEvent onPlayerStranded;
-        [SerializeField]
-        UnityEvent onPlayerWin;
+        Ship ship;
 
         float _blackHoleDist;
         bool _launch;
@@ -39,6 +33,8 @@ namespace Player
         Transform _prevPlanet;
         Rigidbody2D _rb;
 
+        CinemachineVirtualCamera _playerCamera;
+        GameManager _gameManager;
         RangeDisplay _rangeDisplay;
         LogbookDisplay _logbook;
 
@@ -46,6 +42,8 @@ namespace Player
         void Start()
         {
             _rb = GetComponent<Rigidbody2D>();
+            _gameManager = GameObject.FindWithTag("GameController").GetComponent<GameManager>();
+            _playerCamera = GameObject.FindWithTag("Player Camera").GetComponent<CinemachineVirtualCamera>();
             _rangeDisplay = GetComponent<RangeDisplay>();
             _logbook = GetComponent<LogbookDisplay>();
         
@@ -56,7 +54,7 @@ namespace Player
                 _rangeDisplay.DrawLines(target, _prevPlanet);
             }
 
-            Assert.IsNotNull(playerCamera);
+            Assert.IsNotNull(_playerCamera);
         }
 
         // Update is called once per frame
@@ -74,10 +72,11 @@ namespace Player
             }
             else if (fuel == 0 && target && !target.GetComponent<PlanetFuel>())
             {
+                //Player stranded.
                 orbitSpeed = Mathf.MoveTowards(orbitSpeed, 0.1f, Time.deltaTime / 2);
                 if (_stopped) return;
                 _stopped = true;
-                onPlayerStranded.Invoke();
+                _gameManager.Lose(1);
             }
         }
 
@@ -85,9 +84,10 @@ namespace Player
         {
             if (!_stopped && !target && _rb.velocity.magnitude < stopThreshold)
             {
+                //Player lost.
                 _stopped = true;
                 _rb.velocity = Vector2.zero;
-                onPlayerLost.Invoke();
+                _gameManager.Lose(0);
             }
         
             if (!target) return;
@@ -119,14 +119,14 @@ namespace Player
 
         void LateUpdate()
         {
-            if (target && playerCamera.enabled)
+            if (target && _playerCamera.enabled)
             {
-                playerCamera.enabled = false;
+                _playerCamera.enabled = false;
                 target.GetComponentInChildren<CinemachineVirtualCamera>().enabled = true;
             }
-            else if (!playerCamera.enabled && !target)
+            else if (!_playerCamera.enabled && !target)
             {
-                playerCamera.enabled = true;
+                _playerCamera.enabled = true;
             }
         }
 
@@ -137,6 +137,7 @@ namespace Player
             _prevPlanet = target;
             target = null;
             _rb.velocity = Vector2.zero;
+            ship.Ignite();
             _rb.AddForce(transform.up * launchSpeed, ForceMode2D.Impulse);
             _rangeDisplay.ClearLines();
         }
@@ -162,7 +163,7 @@ namespace Player
                     .DOFade(0, 1)
                     .SetDelay(blackHoleSucc)
                     .SetEase(Ease.OutSine);
-                onPlayerWin.Invoke();
+                _gameManager.Win();
             }
         }
     }
