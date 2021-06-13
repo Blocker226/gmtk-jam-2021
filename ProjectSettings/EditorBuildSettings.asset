@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: 0721da7ace4aa344883e2932290a5c41
+  - enabled: 1
     path: Assets/Scenes/Level 1 - Pincer.unity
     guid: e36087828a6f2ea4b8b066c296d8cb56
   - enabled: 1

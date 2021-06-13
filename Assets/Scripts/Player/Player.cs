@@ -64,6 +64,7 @@ namespace Player
         {
             if (Input.GetKeyUp(KeyCode.R))
             {
+                DOTween.KillAll();
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
             
