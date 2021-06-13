@@ -5074,8 +5074,9 @@ MonoBehaviour:
   burnDuration: 1
   engineFX: {fileID: 3167710915199315279}
   fireFX: {fileID: 8864459040312764571}
-  fireMax: 0
-  fireDuration: 0
+  fireMax: 50
+  fireDuration: 20
+  shipMaterial: {fileID: 2100000, guid: 2b44c83a19ff0ea43bafaf29206523dc, type: 2}
   engineNoise: {fileID: 1940049418904765068}
 --- !u!210 &4073332279969412594
 SortingGroup:
@@ -10086,7 +10087,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: e1a77ebf4eccce842a07d8de4f43a6f4, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.75
   m_Pitch: 1
   Loop: 1
   Mute: 0

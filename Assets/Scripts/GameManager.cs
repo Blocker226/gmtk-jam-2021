@@ -70,6 +70,18 @@ public class GameManager : MonoBehaviour
             .SetDelay(startLength - transitionLength).SetEase(Ease.OutQuad);
     }
 
+    public void Restart()
+    {
+        DOTween.KillAll();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void MainMenu()
+    {
+        DOTween.KillAll();
+        SceneManager.LoadScene("Main Menu");
+    }
+    
     public void Win()
     {
         gameCanvas.DOFade(0, transitionLength / 2);

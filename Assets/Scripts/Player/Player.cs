@@ -67,10 +67,16 @@ namespace Player
         // Update is called once per frame
         void Update()
         {
+            if (Input.GetKeyUp(KeyCode.Escape))
+            {
+                _gameManager.MainMenu();
+                return;
+            }
+            
             if (Input.GetKeyUp(KeyCode.R))
             {
-                DOTween.KillAll();
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                _gameManager.Restart();
+                return;
             }
             
             if (Input.GetKeyDown(KeyCode.Space) && fuel > 0)
@@ -79,7 +85,7 @@ namespace Player
                 {
                     _launch = true;
                 }
-                else
+                else if (!_boost)
                 {
                     _boost = true;
                 }
@@ -160,6 +166,7 @@ namespace Player
             target = null;
             _rb.velocity = Vector2.zero;
             ship.Ignite();
+            ship.StopFire();
             _rb.AddForce(transform.up * launchSpeed, ForceMode2D.Impulse);
             _rangeDisplay.ClearLines();
 
@@ -190,6 +197,11 @@ namespace Player
             
             if (!other.CompareTag("Finish"))
             {
+                if (other.GetComponent<PlanetVolcanic>())
+                {
+                    ship.StartFire();
+                }
+                
                 _rangeDisplay.DrawLines(target, _prevPlanet);
                 _logbook.AddPlanet(target);
             }
