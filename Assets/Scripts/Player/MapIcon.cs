@@ -26,6 +26,14 @@ public class MapIcon : MonoBehaviour
                 Vector3 final = _cam.WorldToScreenPoint(pos);
                 knobs.Add(Instantiate(GameObj, final, Quaternion.identity, CanvasManager));
             }
+
+            foreach(GameObject GO in GameObject.FindGameObjectsWithTag("Finish"))
+            {
+                planetList.Add(GO);
+                Vector3 pos = GO.transform.position;
+                Vector3 final = _cam.WorldToScreenPoint(pos);
+                knobs.Add(Instantiate(GameObj, final, Quaternion.identity, CanvasManager));
+            }
         }
         else
         {

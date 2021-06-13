@@ -20,6 +20,11 @@ public class MapCam : MonoBehaviour
             mapcam.GetComponent<CinemachineTargetGroup>().AddMember(GO.transform, 1, 0);
             //Debug.Log("Planet added");
         }
+        foreach (GameObject GO in GameObject.FindGameObjectsWithTag("Finish"))
+        {
+            mapcam.GetComponent<CinemachineTargetGroup>().AddMember(GO.transform, 1, 0);
+            //Debug.Log("Planet added");
+        }
         _isEnabled = GetComponent<CinemachineVirtualCamera>();
     }
 

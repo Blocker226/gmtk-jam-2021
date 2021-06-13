@@ -25,6 +25,8 @@ namespace Player
         float stopThreshold = 0.125f;
         [SerializeField]
         Ship ship;
+        [SerializeField]
+        AudioSource Attached;
 
         float _blackHoleDist;
         bool _launch;
@@ -164,6 +166,11 @@ namespace Player
                     .SetDelay(blackHoleSucc)
                     .SetEase(Ease.OutSine);
                 _gameManager.Win();
+            }
+
+            if (target.CompareTag("Planet"))
+            {
+                Attached.Play();
             }
         }
     }

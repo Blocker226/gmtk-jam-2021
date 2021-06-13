@@ -84,7 +84,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2926509796764162471
 RectTransform:
   m_ObjectHideFlags: 0
@@ -277,6 +277,8 @@ MonoBehaviour:
   size: 4
   _isShipAttached: 0
   vcam: {fileID: 0}
+  _Tutorial: {fileID: 0}
+  _TutorialWords: 
   secondsLeft: 0
   CountText: {fileID: 2926509796764162468}
   refText: {fileID: 2926509797521008059}

@@ -39,7 +39,7 @@ public class PlanetBase : MonoBehaviour
     protected void camera_ON()
     {
         vcam.enabled = true;
-        vcam.m_Lens.OrthographicSize += size;
+        vcam.m_Lens.OrthographicSize += size*2;
     }
 
     protected void camera_OFF()
