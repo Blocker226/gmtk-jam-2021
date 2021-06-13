@@ -11,23 +11,30 @@ public class MapIcon : MonoBehaviour
     Camera _cam;
     [SerializeField]
     List<GameObject> knobs = new List<GameObject>();
+    [SerializeField]
+    List<GameObject> planetList = new List<GameObject>();
 
     public void openKnobs()
     {
+        // If planets dont exist
         if (knobs.Count == 0)
         {
             foreach (GameObject GO in GameObject.FindGameObjectsWithTag("Planet"))
             {
+                planetList.Add(GO);
                 Vector3 pos = GO.transform.position;
-                //Vector3 final = _cam.WorldToScreenPoint(pos);
-                knobs.Add(Instantiate(GameObj, pos, Quaternion.identity, CanvasManager));
+                Vector3 final = _cam.WorldToScreenPoint(pos);
+                knobs.Add(Instantiate(GameObj, final, Quaternion.identity, CanvasManager));
             }
         }
         else
         {
-            foreach (GameObject Obj in knobs)
+            for(int i = 0; i<knobs.Count; i++)
             {
-                Obj.SetActive(true);
+                Vector3 pos = planetList[i].transform.position;
+                Vector3 final = _cam.WorldToScreenPoint(pos);
+                knobs[i].transform.position = final;
+                knobs[i].SetActive(true);
             }
         }
     }
