@@ -152,7 +152,8 @@ namespace Player
                 other.transform == _prevPlanet) return;
         
             target = other.transform;
-
+            Attached.Play();
+            
             if (!other.CompareTag("Finish"))
             {
                 _rangeDisplay.DrawLines(target, _prevPlanet);
@@ -166,11 +167,6 @@ namespace Player
                     .SetDelay(blackHoleSucc)
                     .SetEase(Ease.OutSine);
                 _gameManager.Win();
-            }
-
-            if (target.CompareTag("Planet"))
-            {
-                Attached.Play();
             }
         }
     }
