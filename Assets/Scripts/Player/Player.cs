@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 namespace Player
 {
@@ -61,6 +62,11 @@ namespace Player
         // Update is called once per frame
         void Update()
         {
+            if (Input.GetKeyUp(KeyCode.R))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
+            
             if (Input.GetKeyDown(KeyCode.Space) && fuel > 0 && target)
             {
                 _launch = true;

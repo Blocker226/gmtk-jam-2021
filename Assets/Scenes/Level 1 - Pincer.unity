@@ -3042,18 +3042,6 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5562693894101915482, guid: 951a2151edbfc964390b5b15a26331b0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5562693894101915482, guid: 951a2151edbfc964390b5b15a26331b0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5562693894101915482, guid: 951a2151edbfc964390b5b15a26331b0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5562693894101915483, guid: 951a2151edbfc964390b5b15a26331b0, type: 3}
       propertyPath: m_Name
       value: Black Hole

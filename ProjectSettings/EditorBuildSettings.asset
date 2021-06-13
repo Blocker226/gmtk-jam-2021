@@ -6,6 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Lebel 1.unity
-    guid: c912708bd79a37148ad3aff6af0b4ed9
+    path: Assets/Scenes/Level 1 - Pincer.unity
+    guid: e36087828a6f2ea4b8b066c296d8cb56
+  - enabled: 1
+    path: Assets/Scenes/Level 2 - Spiral.unity
+    guid: efc67ecdf47bab3459b9ccda7970a3ba
+  - enabled: 1
+    path: Assets/Scenes/Level 3 - Cluster.unity
+    guid: 3307e7c901f02c646abde700a14362dd
+  - enabled: 1
+    path: Assets/Scenes/Level 4 - Finale.unity
+    guid: 72e2153dfadb96e4cb8b174c7922a87b
   m_configObjects: {}

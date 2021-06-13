@@ -24,6 +24,7 @@ namespace Player
 
         public void AddPlanet(Transform planet)
         {
+            if (_line == null) return;
             if (_line.points3.Count > 0)
             {
                 Vector3 lastSeg = _line.points3[_line.points3.Count - 1];
