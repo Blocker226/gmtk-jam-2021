@@ -21,7 +21,14 @@ public class PlanetFuel : PlanetBase
             orbitSpd = collision.gameObject.GetComponent<Player.Player>().orbitSpeed;
             //Debug.Log("Fuel Orbit Speed: " + orbitSpd.ToString());
             _isShipAttached = true;
-            collision.gameObject.GetComponent<Player.Player>().fuel++;
+            if(collision.gameObject.GetComponent<Player.Player>().fuel <= 3)
+            {
+                collision.gameObject.GetComponent<Player.Player>().fuel += 2;
+            }
+            else
+            {
+                collision.gameObject.GetComponent<Player.Player>().fuel++;
+            }
             //Debug.Log("Fuel ++");
             //camera_ON();
             //Debug.Log("Fuel Cam Enabled");
