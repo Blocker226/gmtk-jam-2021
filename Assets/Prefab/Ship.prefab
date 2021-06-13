@@ -5011,6 +5011,7 @@ GameObject:
   - component: {fileID: 7566102614835944272}
   - component: {fileID: 690466304203349696}
   - component: {fileID: 6770001385525037829}
+  - component: {fileID: 4073332279969412594}
   m_Layer: 0
   m_Name: Ship
   m_TagString: Untagged
@@ -5076,6 +5077,17 @@ MonoBehaviour:
   fireMax: 0
   fireDuration: 0
   engineNoise: {fileID: 1940049418904765068}
+--- !u!210 &4073332279969412594
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2312233519445984946}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1 &2314828868445276065
 GameObject:
   m_ObjectHideFlags: 0
