@@ -49,12 +49,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  launchSpeed: 10
+  launchSpeed: 15
   orbitSpeed: 2
+  blackHoleSucc: 4
   fuel: 5
   stopThreshold: 0.25
   playerCamera: {fileID: 0}
-  onPlayerStopped:
+  onPlayerLost:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerStranded:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerWin:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &1966861637028383440
@@ -69,7 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edeb1b77f65aac046a69437adb9cdd4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 30
+  range: 40
   mask:
     serializedVersion: 2
     m_Bits: 64

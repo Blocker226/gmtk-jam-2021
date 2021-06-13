@@ -1,4 +1,6 @@
 using Cinemachine;
+using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.Events;
@@ -15,6 +17,8 @@ namespace Player
         [SerializeField]
         public float orbitSpeed = 1;
         [SerializeField]
+        float blackHoleSucc = 1;
+        [SerializeField]
         public int fuel = 5;
         [SerializeField]
         float stopThreshold = 0.125f;
@@ -24,8 +28,10 @@ namespace Player
         UnityEvent onPlayerLost;
         [SerializeField]
         UnityEvent onPlayerStranded;
+        [SerializeField]
+        UnityEvent onPlayerWin;
 
-        float _defaultOrbitSpeed;
+        float _blackHoleDist;
         bool _launch;
         bool _stopped;
 
@@ -41,7 +47,6 @@ namespace Player
             _rb = GetComponent<Rigidbody2D>();
             _rangeDisplay = GetComponent<RangeDisplay>();
             _logbook = GetComponent<LogbookDisplay>();
-            _defaultOrbitSpeed = orbitSpeed;
         
             if (target)
             {
@@ -82,19 +87,27 @@ namespace Player
             Quaternion q = Quaternion.AngleAxis(orbitSpeed, Vector3.forward);
             Vector3 targetPosition = target.position;
             Vector3 currentPosition = transform.position;
-            //_rb.MoveRotation(_rb.transform.rotation * q);
             float theta = Mathf.Atan2(
                 currentPosition.x - targetPosition.x,
                 targetPosition.y - currentPosition.y);
             _rb.MoveRotation(Quaternion.AngleAxis(Mathf.Rad2Deg * theta - 90, Vector3.forward));
-            _rb.MovePosition(q * (_rb.transform.position - targetPosition) + targetPosition);
 
-        
-            if (_launch)
-            { 
-                target.GetComponentInChildren<CinemachineVirtualCamera>().enabled = false;
-                LaunchShip();
+            if (!target.CompareTag("Finish"))
+            {
+                _rb.MovePosition(q * (_rb.transform.position - targetPosition) + targetPosition);
             }
+            else
+            {
+                _blackHoleDist = Mathf.MoveTowards(
+                    _blackHoleDist, 0, blackHoleSucc * Time.fixedDeltaTime);
+                _rb.MovePosition(q * (_rb.transform.position - targetPosition).normalized *
+                                 _blackHoleDist + targetPosition);
+            }
+
+
+            if (!_launch) return;
+            target.GetComponentInChildren<CinemachineVirtualCamera>().enabled = false;
+            LaunchShip();
         }
 
         void LateUpdate()
@@ -118,6 +131,7 @@ namespace Player
             target = null;
             _rb.velocity = Vector2.zero;
             _rb.AddForce(transform.up * launchSpeed, ForceMode2D.Impulse);
+            _rangeDisplay.ClearLines();
         }
 
         void OnTriggerEnter2D(Collider2D other)
@@ -128,8 +142,21 @@ namespace Player
                 other.transform == _prevPlanet) return;
         
             target = other.transform;
-            _rangeDisplay.DrawLines(target, _prevPlanet);
-            _logbook.AddPlanet(target);
+
+            if (!other.CompareTag("Finish"))
+            {
+                _rangeDisplay.DrawLines(target, _prevPlanet);
+                _logbook.AddPlanet(target);
+            }
+            else
+            {
+                _blackHoleDist = Vector2.Distance(target.position, transform.position);
+                GetComponentInChildren<SpriteRenderer>()
+                    .DOFade(0, 1)
+                    .SetDelay(blackHoleSucc)
+                    .SetEase(Ease.OutSine);
+                onPlayerWin.Invoke();
+            }
         }
     }
 }
