@@ -148,6 +148,8 @@ MonoBehaviour:
   size: 1
   _isShipAttached: 0
   vcam: {fileID: 0}
+  _Tutorial: {fileID: 0}
+  _TutorialWords: 
 --- !u!1 &6774266132574820783
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,7 +241,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6774266132753305236}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6774266132574820782}
@@ -268,7 +270,7 @@ MonoBehaviour:
   m_Follow: {fileID: 6774266131258463704}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 7
+    OrthographicSize: 10
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0

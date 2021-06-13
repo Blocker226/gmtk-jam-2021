@@ -50,6 +50,8 @@ MonoBehaviour:
   size: 4
   _isShipAttached: 0
   vcam: {fileID: 0}
+  _Tutorial: {fileID: 0}
+  _TutorialWords: 
 --- !u!58 &226649090950458754
 CircleCollider2D:
   m_ObjectHideFlags: 0

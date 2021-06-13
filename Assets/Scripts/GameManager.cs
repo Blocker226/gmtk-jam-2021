@@ -42,6 +42,13 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI gameOverText;
 
+    [SerializeField]
+    AudioSource audio_drifted;
+    [SerializeField]
+    AudioSource audio_outoffuel;
+    [SerializeField]
+    AudioSource bgm;
+
     void Start()
     {
         gameStartText.text = levelTitle + "\n" + currentLevel + "/4";
@@ -75,5 +82,15 @@ public class GameManager : MonoBehaviour
         gameOverText.text = gameOverMessages[message];
         gameOverCanvas.DOFade(1, transitionLength);
         Debug.Log("YOU LOS");
+        if(message == 0)
+        {
+            audio_drifted.Play();
+        }
+        else
+        {
+            audio_outoffuel.volume = 0.5f;
+            audio_outoffuel.Play();
+        }
+        bgm.Stop();
     }
 }

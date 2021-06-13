@@ -8,7 +8,7 @@ using TMPro;
  */
 public class PlanetVolcanic : PlanetBase
 {
-    float countDown = 30.0f; // base value is 30s
+    float countDown = 20.0f; // base value is 20s
     [SerializeField]
     double secondsLeft;
     public TextMeshProUGUI CountText;
@@ -23,7 +23,7 @@ public class PlanetVolcanic : PlanetBase
         {
             // effect the ship's orbit here
             countDown -= Time.deltaTime;
-            player.gameObject.GetComponent<Player.Player>().orbitSpeed += (Time.deltaTime / 12 * size);
+            player.gameObject.GetComponent<Player.Player>().orbitSpeed += (Time.deltaTime / 12 * size * 3/2);
         }
 
         else
@@ -47,6 +47,7 @@ public class PlanetVolcanic : PlanetBase
             //Debug.Log("Volc Orbit Speed: " + orbitSpd.ToString());
             // alternatively this can also be effected by the size of the planet
             orbitReg(collision);
+            camera_ON();
         }
     }
 
@@ -56,7 +57,7 @@ public class PlanetVolcanic : PlanetBase
         {
             _isShipAttached = false;
             refText.SetActive(false);
-            countDown = 30.0f;
+            countDown = 20.0f;
             collision.gameObject.GetComponent<Player.Player>().orbitSpeed = orbitSpd;
             //Debug.Log("Volc Orbit Speed: " + orbitSpd.ToString());
         }
@@ -83,7 +84,7 @@ public class PlanetVolcanic : PlanetBase
         }
         else
         {
-            countDown = 30.0f; // rst countdown
+            countDown = 20.0f; // rst countdown
             if(_Tutorial)
             {
                 _Tutorial.text = "";

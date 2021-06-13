@@ -264,7 +264,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 10
+  m_Priority: 14
   m_StandbyUpdate: 0
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 3698143948744708596}
@@ -425,6 +425,8 @@ MonoBehaviour:
   size: 4
   _isShipAttached: 0
   vcam: {fileID: 0}
+  _Tutorial: {fileID: 0}
+  _TutorialWords: 
   secondsLeft: 0
   CountText: {fileID: 3698143947114269724}
   refText: {fileID: 3698143949045985283}

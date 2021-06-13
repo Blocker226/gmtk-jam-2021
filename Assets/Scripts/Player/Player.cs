@@ -31,6 +31,8 @@ namespace Player
         UnityEvent onPlayerStranded;
         [SerializeField]
         UnityEvent onPlayerWin;
+        [SerializeField]
+        AudioSource Attached;
 
         float _blackHoleDist;
         bool _launch;
@@ -163,6 +165,11 @@ namespace Player
                     .SetDelay(blackHoleSucc)
                     .SetEase(Ease.OutSine);
                 onPlayerWin.Invoke();
+            }
+
+            if (target.CompareTag("Planet"))
+            {
+                Attached.Play();
             }
         }
     }
