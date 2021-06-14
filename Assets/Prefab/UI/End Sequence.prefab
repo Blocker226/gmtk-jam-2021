@@ -758,9 +758,9 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5934064108433822704}
   m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!1 &6357973969873100532
 GameObject:
@@ -943,8 +943,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camSpeed: 1
   scrollSpeed: 50
-  scrollLength: 4400
+  scrollLength: 4500
   credits: {fileID: 4221408423434261159}
+  useCamera: 1
+  toggleEscapeKey: 0
+  onSequenceStop:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &9219602658292194454
 GameObject:
   m_ObjectHideFlags: 0
@@ -1041,7 +1046,7 @@ MonoBehaviour:
 
     Ship Art Assets
 
-    Kenny
+    <b>Kenny</b>
     (https://kenny.nl)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

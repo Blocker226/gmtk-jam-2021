@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using DG.Tweening;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace UI
@@ -16,6 +17,7 @@ namespace UI
         public void Play()
         {
             _audio.Play();
+            DOTween.KillAll();
             SceneManager.LoadScene("Tutorial");
         }
         
@@ -25,7 +27,18 @@ namespace UI
             Debug.Log("Application Quitting!");
 #endif
             _audio.Play();
+            DOTween.KillAll();
             Application.Quit();
+        }
+
+        public void OpenURL(string url)
+        {
+            Application.OpenURL(url);
+        }
+
+        public void FadeCanvas(CanvasGroup canvasGroup)
+        {
+            canvasGroup.DOFade(canvasGroup.alpha < 0.5f ? 1 : 0, 2f);
         }
     }
 }

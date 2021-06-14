@@ -2,6 +2,7 @@
 using Cinemachine;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace UI
 {
@@ -15,6 +16,13 @@ namespace UI
         float scrollLength = 3200;
         [SerializeField]
         RectTransform credits;
+        [SerializeField]
+        bool useCamera = true;
+        [SerializeField]
+        bool toggleEscapeKey;
+        [SerializeField]
+        UnityEvent onSequenceStop;
+        
         CanvasGroup _canvas;
         CinemachineVirtualCamera _camera;
         
@@ -26,13 +34,44 @@ namespace UI
 
         public void StartSequence()
         {
-            _camera.transform.position = GameObject.FindWithTag("Finish").transform.position;
-            _camera.transform.Translate(0, 0, -10);
-            _camera.enabled = true;
+            if (useCamera)
+            {
+                _camera.transform.position = GameObject.FindWithTag("Finish").transform.position;
+                _camera.transform.Translate(0, 0, -10);
+                _camera.enabled = true;
 
-            _canvas.DOFade(1, 2f);
-            _camera.transform.DOMoveY(-scrollLength, camSpeed).SetSpeedBased();
+                _camera.transform.DOMoveY(-scrollLength, camSpeed).SetSpeedBased();
+            }
+
+            _canvas.blocksRaycasts = true;
+            _canvas.DOFade(1, 2);
             credits.DOAnchorPosY(scrollLength, scrollSpeed).SetSpeedBased();
+        }
+
+        void StopSequence()
+        {
+            if (useCamera)
+            {
+                _camera.enabled = false;
+                _camera.DORewind();
+                _camera.DOKill();
+            }
+
+            _canvas.blocksRaycasts = false;
+            _canvas.DOFade(0, 2);
+            credits.DORewind();
+            credits.DOKill();
+            onSequenceStop.Invoke();
+        }
+
+        void Update()
+        {
+            if (!toggleEscapeKey) return;
+
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                StopSequence();
+            }
         }
     }
 }
