@@ -30,7 +30,7 @@ namespace Player
         [SerializeField]
         Ship ship;
         [SerializeField]
-        AudioSource Attached;
+        AudioSource attached;
 
         float _blackHoleDist;
         bool _launch;
@@ -190,7 +190,7 @@ namespace Player
                 other.transform == _prevPlanet) return;
         
             target = other.transform;
-            Attached.Play();
+            attached.Play();
             
             EventHandler handler = PlanetReached;
             handler?.Invoke(this, null);

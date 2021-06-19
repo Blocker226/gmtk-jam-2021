@@ -57,7 +57,7 @@ MonoBehaviour:
   fuel: 5
   stopThreshold: 0.2
   ship: {fileID: 6626635650766868090}
-  Attached: {fileID: 5334672257098165835}
+  attached: {fileID: 5334672257098165835}
 --- !u!114 &1966861637028383440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,6 +75,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   lineWidth: 4
+  mainColour:
+    serializedVersion: 2
+    rgba: 3372220160
 --- !u!114 &3015441895514107049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,6 +91,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lineWidth: 4
+  mainColour:
+    serializedVersion: 2
+    rgba: 3372220415
 --- !u!50 &592571306962520485
 Rigidbody2D:
   serializedVersion: 4
@@ -124,7 +130,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.65
+  m_Radius: 0.85
 --- !u!1 &2367506300243759090
 GameObject:
   m_ObjectHideFlags: 0
@@ -277,7 +283,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7566102614835944272, guid: bb2413738f32b0f469b7565c8466344d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.05
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 7566102614835944272, guid: bb2413738f32b0f469b7565c8466344d, type: 3}
       propertyPath: m_LocalPosition.z

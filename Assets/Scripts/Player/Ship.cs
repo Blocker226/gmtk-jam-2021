@@ -17,11 +17,18 @@ namespace Player
         float fireMax;
         [SerializeField]
         float fireDuration;
-        // [SerializeField]
-        // Material shipMaterial;
+        [SerializeField]
+        Color fireColour = Color.red;
         [Space]
         [SerializeField]
         AudioSource engineNoise;
+
+        SpriteRenderer[] _spriteRenderers;
+
+        void Start()
+        {
+            _spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
+        }
 
         public void Ignite(float seconds = 0)
         {
@@ -47,11 +54,16 @@ namespace Player
         {
             ParticleSystem.EmissionModule fireEmission = fireFX.emission;
             float i = 0;
-            while (i < burnDuration)
+            while (i < fireDuration)
             {
                 i += Time.deltaTime;
-                fireEmission.rateOverTime = Mathf.Lerp(0, fireMax, i / burnDuration);
-                //shipMaterial.SetColor(Color1, Color.Lerp(Color.white, Color.red, i / burnDuration));
+                fireEmission.rateOverTime = Mathf.Lerp(0, fireMax, i / fireDuration);
+
+                foreach (SpriteRenderer spriteRenderer in _spriteRenderers)
+                {
+                    spriteRenderer.color = Color.Lerp(Color.white, fireColour, i / fireDuration);
+                }
+                
                 yield return null;
             }
         }
@@ -61,7 +73,10 @@ namespace Player
             StopCoroutine(BurnShip());
             ParticleSystem.EmissionModule fireEmission = fireFX.emission;
             fireEmission.rateOverTime = 0;
-            
+            foreach (SpriteRenderer spriteRenderer in _spriteRenderers)
+            {
+                spriteRenderer.color = Color.white;
+            }
             fireFX.Stop(true);
         }
 
