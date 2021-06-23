@@ -13,14 +13,16 @@ namespace Player
     [RequireComponent(typeof(Rigidbody2D))]
     public class Player : MonoBehaviour
     {
-        [SerializeField]
         public Transform target;
-        [SerializeField]
         public float launchSpeed = 1;
+        [Space]
         [SerializeField]
         float boostSpeed = 3;
         [SerializeField]
         public float orbitSpeed = 1;
+        [SerializeField]
+        float startSpeed = 0.75f;
+        [Space]
         [SerializeField]
         float blackHoleSucc = 1;
         [SerializeField]
@@ -32,11 +34,13 @@ namespace Player
         [SerializeField]
         AudioSource attached;
 
+        float _defaultOrbitSpeed;
+        int _defaultFuel;
         float _blackHoleDist;
         bool _launch;
         bool _boost;
         bool _stopped;
-
+        
         Transform _prevPlanet;
         Rigidbody2D _rb;
 
@@ -44,6 +48,9 @@ namespace Player
         GameManager _gameManager;
         RangeDisplay _rangeDisplay;
         LogbookDisplay _logbook;
+
+        Vector3 _startPosition;
+        Transform _startPlanet;
 
         // Start is called before the first frame update
         void Start()
@@ -53,10 +60,17 @@ namespace Player
             _playerCamera = GameObject.FindWithTag("Player Camera").GetComponent<CinemachineVirtualCamera>();
             _rangeDisplay = GetComponent<RangeDisplay>();
             _logbook = GetComponent<LogbookDisplay>();
-        
+
+            _startPosition = transform.position;
+            _defaultOrbitSpeed = orbitSpeed;
+            _defaultFuel = fuel;
+            orbitSpeed = startSpeed;
+            
             if (target)
             {
                 _prevPlanet = target;
+                _startPlanet = target;
+                
                 _logbook.AddPlanet(target);
                 _rangeDisplay.DrawLines(target, _prevPlanet);
             }
@@ -73,9 +87,9 @@ namespace Player
                 return;
             }
             
-            if (Input.GetKeyUp(KeyCode.R))
+            if (Input.GetKeyUp(KeyCode.R) && target != _startPlanet)
             {
-                _gameManager.Restart();
+                ResetShip();
                 return;
             }
             
@@ -160,6 +174,10 @@ namespace Player
 
         void LaunchShip()
         {
+            if (target == _startPlanet)
+            {
+                orbitSpeed = _defaultOrbitSpeed;
+            }
             _launch = false;
             --fuel;
             _prevPlanet = target;
@@ -170,8 +188,7 @@ namespace Player
             _rb.AddForce(transform.up * launchSpeed, ForceMode2D.Impulse);
             _rangeDisplay.ClearLines();
 
-            EventHandler handler = ShipLaunched;
-            handler?.Invoke(this, null);
+            ShipLaunched?.Invoke(this, null);
         }
 
         void BoostShip()
@@ -182,6 +199,26 @@ namespace Player
             _boost = false;
         }
 
+        void ResetShip()
+        {
+            _gameManager.Restart();
+            if (target)
+            {
+                target.GetComponentInChildren<CinemachineVirtualCamera>().enabled = false;
+                ShipLaunched?.Invoke(this, null);
+            }
+            transform.position = _startPosition;
+            orbitSpeed = startSpeed;
+            fuel = _defaultFuel;
+            target = _startPlanet;
+            target.GetComponentInChildren<CinemachineVirtualCamera>().enabled = true;
+            PlanetReached?.Invoke(this, null);
+            ship.StopFire(true);
+            _stopped = false;
+            _logbook.ResetLine();
+            _rangeDisplay.DrawLines(target, target);
+        }
+        
         void OnTriggerEnter2D(Collider2D other)
         {
             if (target) return;
@@ -192,8 +229,7 @@ namespace Player
             target = other.transform;
             attached.Play();
             
-            EventHandler handler = PlanetReached;
-            handler?.Invoke(this, null);
+            PlanetReached?.Invoke(this, null);
             
             if (!other.CompareTag("Finish"))
             {

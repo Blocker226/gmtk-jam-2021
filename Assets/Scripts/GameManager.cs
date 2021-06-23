@@ -72,8 +72,18 @@ public class GameManager : MonoBehaviour
 
     public void Restart()
     {
-        DOTween.KillAll();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //DOTween.KillAll();
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        gameCanvas.alpha = 1;
+        gameOverCamera.enabled = false;
+        gameOverCanvas.alpha = 0;
+
+        if (_bgm.volume < 0.5f)
+        {
+            _bgm.DOKill();
+            _bgm.DOFade(1, 2);
+        }
+        _audio.Play();
     }
 
     public void MainMenu()

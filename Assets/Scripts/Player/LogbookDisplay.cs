@@ -35,6 +35,16 @@ namespace Player
             Debug.Log("Chart line created.");
         }
 
+        public void ResetLine()
+        {
+            Vector3 first = _line.points3[0];
+            _line.points3.Clear();
+            _line.points3.Add(first);
+            
+            _colors.Clear();
+            _line.SetColors(_colors);
+        }
+        
         public void AddPlanet(Transform planet)
         {
             if (_line == null) InitLine();
@@ -48,19 +58,15 @@ namespace Player
                 _line.points3.Add(lastSeg + vector.normalized * 2.5f);
                 _colors.Add(_clearColour);
 
-                _line.points3.Add(lastSeg + vector * 0.4f);
+                _line.points3.Add(lastSeg + vector * 0.6f);
                 _colors.Add(mainColour);
                 
                 _line.points3.Add(lastSeg + vector * 0.75f);
-                _colors.Add(mainColour);
 
-                if (vector.magnitude > 10)
+                if (vector.magnitude > 12)
                 {
-                    _line.points3.Add(position + vector.normalized * -2.5f);
-                }
-                else
-                {
-                    _line.points3.Add(lastSeg + vector * 0.85f);
+                    _colors.Add(mainColour);
+                    _line.points3.Add(position + vector.normalized * -2);
                 }
                 _colors.Add(_clearColour);
 

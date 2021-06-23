@@ -37,19 +37,19 @@ public class PlanetBase : MonoBehaviour
         a.gameObject.GetComponent<Player.Player>().orbitSpeed -= size / 12;
     }
 
-    protected void camera_ON()
-    {
-        vcam.enabled = true;
-        //vcam.m_Lens.OrthographicSize += size*2;
-    }
+    // protected void camera_ON()
+    // {
+    //     vcam.enabled = true;
+    //     //vcam.m_Lens.OrthographicSize += size*2;
+    // }
 
-    protected void camera_OFF()
-    {
-        vcam.enabled = false;
-        //vcam.m_Lens.OrthographicSize -= size * 2;
-    }
+    // protected void camera_OFF()
+    // {
+    //     vcam.enabled = false;
+    //     //vcam.m_Lens.OrthographicSize -= size * 2;
+    // }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
@@ -64,7 +64,7 @@ public class PlanetBase : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {

@@ -25,9 +25,12 @@ namespace Player
 
         SpriteRenderer[] _spriteRenderers;
 
+        IEnumerator _burnCoroutine;
+
         void Start()
         {
             _spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
+            _burnCoroutine = BurnShip();
         }
 
         public void Ignite(float seconds = 0)
@@ -47,7 +50,8 @@ namespace Player
         public void StartFire()
         {
             fireFX.Play(true);
-            StartCoroutine(BurnShip());
+            StartCoroutine(_burnCoroutine);
+            Debug.Log("Fire started!");
         }
 
         IEnumerator BurnShip()
@@ -68,9 +72,10 @@ namespace Player
             }
         }
         
-        public void StopFire()
+        public void StopFire(bool clear = false)
         {
-            StopCoroutine(BurnShip());
+            StopCoroutine(_burnCoroutine);
+            _burnCoroutine = BurnShip();
             ParticleSystem.EmissionModule fireEmission = fireFX.emission;
             fireEmission.rateOverTime = 0;
             foreach (SpriteRenderer spriteRenderer in _spriteRenderers)
@@ -78,6 +83,10 @@ namespace Player
                 spriteRenderer.color = Color.white;
             }
             fireFX.Stop(true);
+            if (clear)
+            {
+                fireFX.Clear();
+            }
         }
 
         void OnDestroy()

@@ -15,7 +15,7 @@ public class PlanetFuel : PlanetBase
         planetInit();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
@@ -31,7 +31,7 @@ public class PlanetFuel : PlanetBase
                 collision.gameObject.GetComponent<Player.Player>().fuel++;
             }
             //Debug.Log("Fuel ++");
-            camera_ON();
+            //camera_ON();
             //Debug.Log("Fuel Cam Enabled");
             // alternatively this can also be effected by the size of the planet
             //collision.gameObject.GetComponent<Player.Player>().orbitSpeed /= (float)size;
@@ -43,14 +43,14 @@ public class PlanetFuel : PlanetBase
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
             _isShipAttached = false;
             collision.gameObject.GetComponent<Player.Player>().orbitSpeed = orbitSpd;
             //Debug.Log("Fuel Orbit Speed: " + orbitSpd.ToString());
-            camera_OFF();
+            //camera_OFF();
             if (_Tutorial)
             {
                 _Tutorial.text = "";

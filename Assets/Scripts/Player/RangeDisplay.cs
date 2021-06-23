@@ -55,13 +55,20 @@ namespace Player
 
                 Vector3 vector = (position - lastSeg);
                 
-                points.Add(lastSeg + vector.normalized * 5);
+                if (vector.magnitude > 15)
+                {
+                    points.Add(lastSeg + vector.normalized * 5);
+                }
+                else
+                {
+                    points.Add(lastSeg + vector * 0.25f);
+                }
                 colors.Add(_clearColour);
                 
                 points.Add(lastSeg + vector / 2);
                 colors.Add(mainColour);
 
-                if (vector.magnitude > 10)
+                if (vector.magnitude > 15)
                 {
                     points.Add(position + vector.normalized * -2.5f);
                 }
