@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Cinemachine;
 using DG.Tweening;
 using UnityEngine;
@@ -97,6 +94,7 @@ public class GameManager : MonoBehaviour
         gameCanvas.DOFade(0, transitionLength / 2);
         if (currentLevel < 4 && SceneManager.GetActiveScene().buildIndex + 1 < SceneManager.sceneCountInBuildSettings)
         {
+            _bgm.DOFade(0.1f, transitionLength).SetDelay(4f);
             fadeCanvas.DOFade(1, transitionLength)
                 .SetDelay(4.5f).SetEase(Ease.OutQuad)
                 .OnComplete(() =>

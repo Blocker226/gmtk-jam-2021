@@ -66,7 +66,7 @@ namespace Player
                 if (vector.magnitude > 12)
                 {
                     _colors.Add(mainColour);
-                    _line.points3.Add(position + vector.normalized * -2);
+                    _line.points3.Add(position + vector.normalized * -2.25f);
                 }
                 _colors.Add(_clearColour);
 

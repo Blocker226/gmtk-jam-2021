@@ -232,7 +232,7 @@ RectTransform:
   m_Children:
   - {fileID: 958616223}
   m_Father: {fileID: 1217412457}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -824,7 +824,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7170285672279920548, guid: 44ddb5783121ed04fa8c7c4d1fe2d1f1, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44ddb5783121ed04fa8c7c4d1fe2d1f1, type: 3}
@@ -1852,9 +1852,9 @@ PrefabInstance:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 2df8815e6670e2249960326c43cd9e7b, type: 3}
-    - target: {fileID: 6613439386097780271, guid: 27e3eb06b8f01f04da8a4935bd3e4f4f, type: 3}
-      propertyPath: m_Layer
-      value: 7
+    - target: {fileID: 6949518255984856512, guid: 27e3eb06b8f01f04da8a4935bd3e4f4f, type: 3}
+      propertyPath: antialiasingMode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8368109690542394322, guid: 27e3eb06b8f01f04da8a4935bd3e4f4f, type: 3}
       propertyPath: m_RootOrder
@@ -1899,10 +1899,6 @@ PrefabInstance:
     - target: {fileID: 8368109690542394322, guid: 27e3eb06b8f01f04da8a4935bd3e4f4f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8368109690542394323, guid: 27e3eb06b8f01f04da8a4935bd3e4f4f, type: 3}
-      propertyPath: orthographic size
-      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8368109690542394325, guid: 27e3eb06b8f01f04da8a4935bd3e4f4f, type: 3}
       propertyPath: m_Name

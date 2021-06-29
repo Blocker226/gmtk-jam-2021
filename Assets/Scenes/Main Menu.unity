@@ -2325,7 +2325,12 @@ MonoBehaviour:
     Ship Art Assets
 
     <b>Kenny</b> 
-    (https://kenny.nl)'
+    (https://kenny.nl)
+
+
+    Music
+
+    <b>John Leonard French</b>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2388,7 +2393,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: -375.7426}
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2441,12 +2446,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 346769094}
-  m_Father: {fileID: 4221408422236575420}
-  m_RootOrder: 2
+  m_Father: {fileID: 7683962348863668751}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -2928.9773}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: -1020}
   m_SizeDelta: {x: 1024, y: 562}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &1505705177288930484
@@ -2616,8 +2621,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7683962348863668751}
-  - {fileID: 5692962068791701475}
-  - {fileID: 1461833394952362599}
   - {fileID: 514233739}
   m_Father: {fileID: 1386065347545154169}
   m_RootOrder: 1
@@ -2733,12 +2736,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 609673628473990316}
-  m_Father: {fileID: 4221408422236575420}
-  m_RootOrder: 1
+  m_Father: {fileID: 7683962348863668751}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -2298.9773}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: -420}
   m_SizeDelta: {x: 1024, y: 562}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5787416055156395822
@@ -3005,14 +3008,16 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 5692962068791701475}
+  - {fileID: 1461833394952362599}
   m_Father: {fileID: 4221408422236575420}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -829.97437}
-  m_SizeDelta: {x: 1024.4, y: 472.835}
+  m_SizeDelta: {x: 1024.4, y: 1280}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!4 &7710016118237195930
 Transform:
@@ -3061,7 +3066,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camSpeed: 1
   scrollSpeed: 50
-  scrollLength: 3000
+  scrollLength: 3200
   credits: {fileID: 4221408422236575420}
   useCamera: 0
   toggleEscapeKey: 1

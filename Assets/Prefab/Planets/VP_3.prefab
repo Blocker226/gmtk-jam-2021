@@ -293,7 +293,7 @@ MonoBehaviour:
   _Tutorial: {fileID: 0}
   _TutorialWords: 
   countDown: 20
-  maxOrbitSpeed: 5
+  maxSpeed: 10
 --- !u!1001 &5816961303237445060
 PrefabInstance:
   m_ObjectHideFlags: 0

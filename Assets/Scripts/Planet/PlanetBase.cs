@@ -34,7 +34,7 @@ public class PlanetBase : MonoBehaviour
 
     protected void orbitReg(Collider2D a)
     {
-        a.gameObject.GetComponent<Player.Player>().orbitSpeed -= size / 12;
+        a.gameObject.GetComponent<Player.Player>().orbitSpeed -= size / 12f;
     }
 
     // protected void camera_ON()

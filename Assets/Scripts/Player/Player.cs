@@ -40,10 +40,10 @@ namespace Player
         bool _launch;
         bool _boost;
         bool _stopped;
+        bool _won = false;
         
         Transform _prevPlanet;
         Rigidbody2D _rb;
-        public float shipVelocity;
 
         CinemachineVirtualCamera _playerCamera;
         GameManager _gameManager;
@@ -82,11 +82,18 @@ namespace Player
         // Update is called once per frame
         void Update()
         {
-            shipVelocity = _rb.velocity.magnitude;
             if (Input.GetKeyUp(KeyCode.Escape))
             {
                 _gameManager.MainMenu();
                 return;
+            }
+
+            if (_won) return;
+
+            if (target == _startPlanet)
+            {
+                //Force start speed change
+                orbitSpeed = startSpeed;
             }
             
             if (Input.GetKeyUp(KeyCode.R) && target != _startPlanet)
@@ -115,6 +122,7 @@ namespace Player
                 _stopped = true;
                 _gameManager.Lose(1);
             }
+
         }
 
         void FixedUpdate()
@@ -210,13 +218,13 @@ namespace Player
                 ShipLaunched?.Invoke(this, null);
             }
             transform.position = _startPosition;
-            orbitSpeed = startSpeed;
             fuel = _defaultFuel;
             target = _startPlanet;
             target.GetComponentInChildren<CinemachineVirtualCamera>().enabled = true;
             PlanetReached?.Invoke(this, null);
             ship.StopFire(true);
             _stopped = false;
+            _won = false;
             _logbook.ResetLine();
             _rangeDisplay.DrawLines(target, target);
         }
@@ -245,6 +253,7 @@ namespace Player
             }
             else
             {
+                _won = true;
                 _blackHoleDist = Vector2.Distance(target.position, transform.position);
                 GetComponentInChildren<SpriteRenderer>()
                     .DOFade(0, 1)
