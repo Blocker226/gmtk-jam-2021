@@ -5,13 +5,25 @@ using UnityEngine;
  */
 public class PlanetVolcanic : PlanetBase
 {
-    float countDown = 20.0f; // base value is 20s
+    [SerializeField]
+    float countDown = 20.0f; // rate at which the speed increases
     //[SerializeField]
     //double secondsLeft;
     //public TextMeshProUGUI CountText;
     GameObject player;
     //[SerializeField]
     //GameObject refText;
+    float  BaseOrbitSpeed = 1.0f;
+    [Range(1, 10)]
+    public int adjustForSpeed = 4;
+    [Range(1, 10)]
+    public int LaunchControl = 1;
+
+    void setDefaultSpeed()
+    {
+        BaseOrbitSpeed = transform.localScale.x *BaseOrbitSpeed;
+    }
+    
 
     void TimerRun()
     {
@@ -19,8 +31,8 @@ public class PlanetVolcanic : PlanetBase
         if (countDown > 0)
         {
             // effect the ship's orbit here
-            countDown -= Time.deltaTime;
-            player.GetComponent<Player.Player>().orbitSpeed += (Time.deltaTime / 12 * size * 3/2);
+            countDown -= Time.fixedDeltaTime;
+            player.GetComponent<Player.Player>().orbitSpeed += Time.deltaTime/adjustForSpeed * BaseOrbitSpeed;
         }
 
         else
@@ -40,6 +52,7 @@ public class PlanetVolcanic : PlanetBase
             //refText.SetActive(true);
             player = collision.gameObject;
             orbitSpd = collision.gameObject.GetComponent<Player.Player>().orbitSpeed;
+            //collision.gameObject.GetComponent<Player.Player>().orbitSpeed += collision.gameObject.GetComponent<Player.Player>().shipVelocity/10;
             //Debug.Log("Volc Orbit Speed: " + orbitSpd.ToString());
             // alternatively this can also be effected by the size of the planet
             orbitReg(collision);
@@ -54,6 +67,7 @@ public class PlanetVolcanic : PlanetBase
             _isShipAttached = false;
             //refText.SetActive(false);
             countDown = 20.0f;
+            //collision.gameObject.GetComponent<Player.Player>().launchSpeed = collision.gameObject.GetComponent<Player.Player>().orbitSpeed/LaunchControl;
             collision.gameObject.GetComponent<Player.Player>().orbitSpeed = orbitSpd;
             //camera_OFF();
             //Debug.Log("Volc Orbit Speed: " + orbitSpd.ToString());
@@ -64,6 +78,7 @@ public class PlanetVolcanic : PlanetBase
     void Start()
     {
         planetInit();
+        setDefaultSpeed();
     }
 
     // Update is called once per frame

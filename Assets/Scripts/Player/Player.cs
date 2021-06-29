@@ -43,6 +43,7 @@ namespace Player
         
         Transform _prevPlanet;
         Rigidbody2D _rb;
+        public float shipVelocity;
 
         CinemachineVirtualCamera _playerCamera;
         GameManager _gameManager;
@@ -81,6 +82,7 @@ namespace Player
         // Update is called once per frame
         void Update()
         {
+            shipVelocity = _rb.velocity.magnitude;
             if (Input.GetKeyUp(KeyCode.Escape))
             {
                 _gameManager.MainMenu();
