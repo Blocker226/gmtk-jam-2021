@@ -8,10 +8,14 @@ namespace UI
     public class MainMenuButtons : MonoBehaviour
     {
         AudioSource _audio;
-
+        [SerializeField]
+        GameObject quitButton;
         void Start()
         {
             _audio = GetComponent<AudioSource>();
+#if UNITY_WEBGL
+            Destroy(quitButton);
+#endif
         }
 
         public void Play()
